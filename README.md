@@ -53,7 +53,18 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
 <small>2. The table is adapted from this [article](https://www.sciencedirect.com/science/article/pii/S2352340918307182).
 </small>
 
+## Step 2-1: Data Cleaning
+### (1) Download dataset
+### (2) Remove description
+
+As shown in Figure 1-2, the original excel file contains some description, which are not need for the program. So we remove them here.
+### (3) Keep relevant variables & Handle data type
+
+Also, since there're some missing values in the excel file, the default `pd.read_excel()` function can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.
+
+For the datetime columns `OUTAGE."{START|RESTORATION}.{DATE|TIME}`, we will handle them later.
 
 <iframe src="dataframe/df_2_4.html" width="800" height="600" frameborder="0"></iframe>
 
 <iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
+
