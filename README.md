@@ -64,7 +64,8 @@ Also, since there're some missing values in the excel file, the default `pd.read
 
 For the datetime columns `OUTAGE."{START|RESTORATION}.{DATE|TIME}`, we will handle them later.
 
-<iframe src="dataframe/df_2_4.html" width="800" height="600" frameborder="0"></iframe>
+
 
 <iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="dataframe/df_2_4.html" width="800" height="600" frameborder="0"></iframe>
 
