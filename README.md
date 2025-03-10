@@ -53,4 +53,4 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
 <small>2. The table is adapted from this [article](https://www.sciencedirect.com/science/article/pii/S2352340918307182).
 </small>
 
-<iframe src="pictures/fig_2_1.html"></iframe>
+<iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
