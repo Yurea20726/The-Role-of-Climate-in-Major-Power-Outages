@@ -11,10 +11,12 @@ As shown in Figure 1-1, from January 2001 to July 2016, among the recorded 1,534
 <center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_1.png" height="400px"></center>
 <center><strong>Figure 1-1.</strong> Cause of massive power outage. Copied from Figure 2-1.</center>
 
-The dataset was provided by Laboratory for Advancing Sustainable Critical Infrastructure in Purdue University. You can access the original excel file from [here](https://engineering.purdue.edu/LASCI/research-data/outages). Table 1<sup><small>2</small></sup> shows the description of each variable used in this project.
+The dataset was provided by Laboratory for Advancing Sustainable Critical Infrastructure in Purdue University. You can access the original excel file from [here](https://engineering.purdue.edu/LASCI/research-data/outages). There're 1,534 records of outage, and 57 variables. Table 1<sup><small>2</small></sup> shows all the variables used in this project.
 
 <center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_2.png" height="400px"></center>
 <center><strong>Figure 1-2.</strong> Part of the original excel file.</center>
+
+<br>
 
 <center><table>
   <thead>
