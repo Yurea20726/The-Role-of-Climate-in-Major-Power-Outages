@@ -143,7 +143,7 @@ Before we dig further for the exploration, we need to be careful of where're mis
 <iframe src="pictures/fig_2_8.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-8.</strong> ONI over time.</center>
 
-2. `u.s._state` and `cause.category`: We can capture the pattern of each weather phenomena. This presentation better represents the numerical magnitude and integrates multiple reasons. Can be compared with Figure 2-6. We leave the same observation in (3).1 to avoid duplication.
+2.`u.s._state` and `cause.category`: We can capture the pattern of each weather phenomena. This presentation better represents the numerical magnitude and integrates multiple reasons. Can be compared with Figure 2-6. We leave the same observation in (3).1 to avoid duplication.
 
 ### (3) Interesting Aggregates
 
