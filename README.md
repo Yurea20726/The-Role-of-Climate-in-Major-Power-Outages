@@ -119,12 +119,12 @@ Before we dig further for the exploration, we need to be careful of where're mis
 3.`anomaly.level`: Seem can't get the tread easily. Since anomaly.level itself doesn't have a regular pattern, the frequency of "cold", "normal", "warm" category<sup><small>1</small></sup> is not equal too. Check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for ONI from previous year.
 
 <iframe src="pictures/fig_2_4.html" width="850" height="420" frameborder="0"></iframe>
-<center><strong>Figure 2-4.</strong> Major power outages caused by severe weather. Grouped by anomaly.level</center>
+<center><strong>Figure 2-4.</strong> Major power outages caused by severe weather. Grouped by anomaly level</center>
 
 4.`cause.category.detail`: There're many similar causes. Like "winter storm", "winter", "ice/snow", "ice/snow storm". Maybe they should be viewed as a single category to better differntiate different weather phenomena.
 
 <iframe src="pictures/fig_2_5.html" width="850" height="420" frameborder="0"></iframe>
-<center><strong>Figure 2-5.</strong> Major power outages caused by severe weather. Grouped by cause.category.detail</center>
+<center><strong>Figure 2-5.</strong> Major power outages caused by severe weather. Grouped by cause</center>
 
 5.`u.s._state`: The most severely affected states are "Michigan", "California", and "Texas". Overall, the affected areas are in the west, south through northeast, but barely no in the central part.
 
@@ -134,5 +134,13 @@ Before we dig further for the exploration, we need to be careful of where're mis
 6.`climate.region`: Almost the same trend as (5).
 
 <iframe src="pictures/fig_2_7.html" width="850" height="420" frameborder="0"></iframe>
-<center><strong>Figure 2-7.</strong> Major power outages caused by severe weather. Grouped by climate.region.</center>
+<center><strong>Figure 2-7.</strong> Major power outages caused by severe weather. Grouped by climate region</center>
 
+### (2) Bivariate Analysis
+
+1.`year/month` and `anomaly.level`: Showing the trend of ENSO. The data in the dataset is not complete. You may check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for complete data. Note that, comparing with Figure 2-2 (Top-Left), we have 2 very low ONI and high peak of major power events in 2008 and 2011.
+
+<iframe src="pictures/fig_2_8.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 2-8.</strong> ONI over time.</center>
+
+2. `u.s._state` and `cause.category`: We can capture the pattern of each weather phenomena. This presentation better represents the numerical magnitude and integrates multiple reasons. Can be compared with Figure 2-6. We leave the same observation in (3).1 to avoid duplication.
