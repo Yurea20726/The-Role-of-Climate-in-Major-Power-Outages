@@ -103,8 +103,6 @@ Before we dig further for the exploration, we need to be careful of where're mis
 
 ## Exploratory Data Analysis
 
-## Step 2-2: Exploratory Data Analysis
-
 ### (1) Univariate Analysis
 
 1.`year`: Showing long-term variations. A trend of increase followed by a decrease.
