@@ -2,19 +2,21 @@
 
 By Chang-Yu Lee & Jianrui Zhang
 
-## Step 1: Introduction
+## Introduction
 
 In this project, we want to examine the relationship between climate and massive power outages<sup><small>1</small></sup>.
 
 As shown in Figure 1-1, from January 2001 to July 2016, among the recorded 1,534 major power outages, "severe weather" accounted for nearly 50% of the causes compared to other factors. Therefore, if we can successfully predict the occurrence of severe weather events, both in time and space, that lead to major power outages, and take preventive measures in advance, the frequency of such outages can be significantly reduced.
 
-<center><img src="https://i.imgur.com/51u8Cyo.png" height="400px"></center>
+<center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_1.png" height="400px"></center>
 <center><strong>Figure 1-1.</strong> Cause of massive power outage. Copied from Figure 2-1.</center>
 
-The dataset was provided by Laboratory for Advancing Sustainable Critical Infrastructure in Purdue University. You can access the original excel file from [here](https://engineering.purdue.edu/LASCI/research-data/outages). Table 1<sup><small>2</small></sup> shows the description of each variable used in this project.
+The dataset was provided by Laboratory for Advancing Sustainable Critical Infrastructure in Purdue University. You can access the original excel file from [here](https://engineering.purdue.edu/LASCI/research-data/outages). There're 1,534 records of outage, and 57 variables. Table 1<sup><small>2</small></sup> shows all the variables used in this project.
 
-<center><img src="https://i.imgur.com/2ZRNYV5.png" height="400px"></center>
+<center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_2.png" height="400px"></center>
 <center><strong>Figure 1-2.</strong> Part of the original excel file.</center>
+
+<br>
 
 <center><table>
   <thead>
@@ -33,12 +35,12 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
     <tr><td rowspan="3">Regional Climate Information</td><td>climate.region</td><td>U.S. Climate regions as specified by the National Centers for Environmental Information</td><td></td></tr>
     <tr><td>anomaly.level</td><td>Represents the oceanic El Niño/La Niña (ONI) index referring to cold and warm episodes</td><td></td></tr>
     <tr><td>climate.category</td><td>Climate episodes classified as “Warm”, “Cold”, or “Normal” based on ONI thresholds</td><td></td></tr>
-    <tr><td rowspan="6">Outage Events Information</td><td>Outage.Start.Date</td><td>Day of the year when the outage event started</td><td>Removed</td></tr>
-    <tr><td>outage.start.time</td><td>Time of the day when the outage event started</td><td>Removed</td></tr>
-    <tr><td>outage.restoration.date</td><td>Day of the year when power was restored</td><td>Removed</td></tr>
-    <tr><td>outage.restoration.time</td><td>Time of the day when power was restored</td><td>Removed</td></tr>
-    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Added. Combined from <code>outage.restoration.date</code> and <code>outage.start.time</code></td></tr>
-    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Added. Combined from <code>outage.restoration.date</code> and <code>outage.restoration.time</code></td></tr>
+    <tr><td rowspan="6">Outage Events Information</td><td>Outage.Start.Date</td><td>Day of the year when the outage event started</td><td>Removed.</td></tr>
+    <tr><td>outage.start.time</td><td>Time of the day when the outage event started</td><td>Removed.</td></tr>
+    <tr><td>outage.restoration.date</td><td>Day of the year when power was restored</td><td>Removed.</td></tr>
+    <tr><td>outage.restoration.time</td><td>Time of the day when power was restored</td><td>Removed.</td></tr>
+    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Combined.</td></tr>
+    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Combined.</td></tr>
     <tr><td rowspan="3">Cause of the Event</td><td>cause.category</td><td>Categories of all the events causing major power outages</td><td></td></tr>
     <tr><td>cause.category.detail</td><td>Detailed description of event categories causing major power outages</td><td></td></tr>
     <tr><td>hurricane.names</td><td>Name of the hurricane if the outage was due to a hurricane</td><td></td></tr>
@@ -53,19 +55,28 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
 <small>2. The table is adapted from this [article](https://www.sciencedirect.com/science/article/pii/S2352340918307182).
 </small>
 
-## Step 2-1: Data Cleaning
-### (1) Download dataset
-### (2) Remove description
+## Data Cleaning
 
-As shown in Figure 1-2, the original excel file contains some description, which are not need for the program. So we remove them here.
+### (1) Download dataset
+
+### (2) Remove description 
+As shown in Figure 1-2, the original excel file contains some description, which are not needed for the program, so we remove them here.
+
 ### (3) Keep relevant variables & Handle data type
 
-Also, since there're some missing values in the excel file, the default `pd.read_excel()` function can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.
+Since there're some missing values in the original excel file, the default `pd.read_excel()` can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.
 
-For the datetime columns `OUTAGE."{START|RESTORATION}.{DATE|TIME}`, we will handle them later.
+Combine `outage.{start|restoration}.data` and `outage.{start|restoration}.time` into a new Datetime column `outage.{start|restoration}`, then drop the old those.
 
+Since "Alaska" and "Hawaii" are not in the scope of U.S. climate regions (check appendix A). Plus, we don't have the geometry data for "District of Columbia". We exclude all of them from the dataset.
 
+### (4) At a glimpse: Importance of severe weather
+
+Calculate the proportion of severe weather as the cause of major power outages. Figure 2-1 shows that nearly 50% of them were due to severe weather. Therefore, it's definitely worth a in-depth study.
 
 <iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
-<iframe src="dataframe/df_2_4.html" width="800" height="600" frameborder="0"></iframe>
+
+Then, remove the record caused by other reasons for the rest of the project. There're 750 records left in total.
+
+
 
