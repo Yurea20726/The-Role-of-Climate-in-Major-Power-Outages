@@ -74,9 +74,44 @@ Since "Alaska" and "Hawaii" are not in the scope of U.S. climate regions (check 
 
 Calculate the proportion of severe weather as the cause of major power outages. Figure 2-1 shows that nearly 50% of them were due to severe weather. Therefore, it's definitely worth a in-depth study.
 
-<iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="pictures/fig_2_1.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 2-1.</strong> Cause of massive power outage.</center>
 
-Then, remove the record caused by other reasons for the rest of the project. There're 750 records left in total.
+Then, remove the record caused by other reasons for the rest of the project. Here's our cleaned data, contained 750 records left in total.
 
+| obs | year | month | u.s._state | postal.code | climate.region     | anomaly.level | climate.category | outage.start          | outage.restoration    | cause.category  | cause.category.detail | hurricane.names |
+|-----|------|-------|------------|-------------|--------------------|---------------|------------------|-----------------------|----------------------|----------------|----------------------|----------------|
+| 1   | 2011 | 7     | Minnesota  | MN          | East North Central | -0.3          | normal           | 2011-07-01 17:00:00   | 2011-07-03 20:00:00  | severe weather | NaN                  | NaN            |
+| 3   | 2010 | 10    | Minnesota  | MN          | East North Central | -1.5          | cold             | 2010-10-26 20:00:00   | 2010-10-28 22:00:00  | severe weather | heavy wind           | NaN            |
+| 4   | 2012 | 6     | Minnesota  | MN          | East North Central | -0.1          | normal           | 2012-06-19 04:30:00   | 2012-06-20 23:00:00  | severe weather | thunderstorm         | NaN            |
+| 5   | 2015 | 7     | Minnesota  | MN          | East North Central | 1.2           | warm             | 2015-07-18 02:00:00   | 2015-07-19 07:00:00  | severe weather | NaN                  | NaN            |
+| 6   | 2010 | 11    | Minnesota  | MN          | East North Central | -1.4          | cold             | 2010-11-13 15:00:00   | 2010-11-14 22:00:00  | severe weather | winter storm         | NaN            |
 
+### (5) At a glimpse: Missing values
 
+Before we dig further for the exploration, we need to be careful of where're missing values.
+
+| column                     | proportaion |
+|----------------------------|---------|
+| month                      | 0.005333 |
+| anomaly.level              | 0.005333 |
+| climate.category           | 0.005333 |
+| outage.start               | 0.005333 |
+| outage.restoration         | 0.025333 |
+| cause.category.detail      | 0.245333 |
+| hurricane.names            | 0.905333 |
+
+## Exploratory Data Analysis
+
+## Step 2-2: Exploratory Data Analysis
+
+### (1) Univariate Analysis
+
+1. `year`: Showing long-term variations. A trend of increase followed by a decrease.
+2. `month`: Showing seasonal patterns. A peak in summer (6～8) and a secondary peak in winter (12～2).
+3. `anomaly.level`: Seem can't get the tread easily. Since anomaly.level itself doesn't have a regular pattern, the frequency of "cold", "normal", "warm" category<sup><small>1</small></sup> is not equal too. Check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for ONI from previous year. 
+4. `cause.category.detail`: There're many similar causes. Like "winter storm", "winter", "ice/snow", "ice/snow storm". Maybe they should be viewed as a single category to better differntiate different weather phenomena.
+
+<iframe src="pictures/fig_2_2.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 2-2.</strong> Major power outages caused by severe weather. \
+<br>(Top-Left) Grouped by year. (Top-Right) Grouped by month. <br>(Bottom-Left) Gouped by anomaly.level. (Bottom-Right) Grouped by cause.Category.Detail.</center>
