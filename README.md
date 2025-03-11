@@ -76,7 +76,16 @@ Calculate the proportion of severe weather as the cause of major power outages. 
 
 <iframe src="pictures/fig_2_1.html" width="800" height="400" frameborder="0"></iframe>
 
-Then, remove the record caused by other reasons for the rest of the project. There're 750 records left in total.
+Then, remove the record caused by other reasons for the rest of the project. Here's our cleaned data, contained 750 records left in total.
+
+| obs | year | month | u.s._state | postal.code | climate.region     | anomaly.level | climate.category | outage.start          | outage.restoration    | cause.category  | cause.category.detail | hurricane.names |
+|-----|------|-------|------------|-------------|--------------------|---------------|------------------|-----------------------|----------------------|----------------|----------------------|----------------|
+| 1   | 2011 | 7     | Minnesota  | MN          | East North Central | -0.3          | normal           | 2011-07-01 17:00:00   | 2011-07-03 20:00:00  | severe weather | NaN                  | NaN            |
+| 3   | 2010 | 10    | Minnesota  | MN          | East North Central | -1.5          | cold             | 2010-10-26 20:00:00   | 2010-10-28 22:00:00  | severe weather | heavy wind           | NaN            |
+| 4   | 2012 | 6     | Minnesota  | MN          | East North Central | -0.1          | normal           | 2012-06-19 04:30:00   | 2012-06-20 23:00:00  | severe weather | thunderstorm         | NaN            |
+| 5   | 2015 | 7     | Minnesota  | MN          | East North Central | 1.2           | warm             | 2015-07-18 02:00:00   | 2015-07-19 07:00:00  | severe weather | NaN                  | NaN            |
+| 6   | 2010 | 11    | Minnesota  | MN          | East North Central | -1.4          | cold             | 2010-11-13 15:00:00   | 2010-11-14 22:00:00  | severe weather | winter storm         | NaN            |
+
 
 
 
