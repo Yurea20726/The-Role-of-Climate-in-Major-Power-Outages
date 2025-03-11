@@ -2,7 +2,7 @@
 
 By Chang-Yu Lee & Jianrui Zhang
 
-## Step 1: Introduction
+## Introduction
 
 In this project, we want to examine the relationship between climate and massive power outages<sup><small>1</small></sup>.
 
