@@ -39,15 +39,13 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
     <tr><td>outage.start.time</td><td>Time of the day when the outage event started</td><td>Removed.</td></tr>
     <tr><td>outage.restoration.date</td><td>Day of the year when power was restored</td><td>Removed.</td></tr>
     <tr><td>outage.restoration.time</td><td>Time of the day when power was restored</td><td>Removed.</td></tr>
-    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Combined.</code></td></tr>
-    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Combined.</code></td></tr>
+    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Combined.</td></tr>
+    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Combined.</td></tr>
     <tr><td rowspan="3">Cause of the Event</td><td>cause.category</td><td>Categories of all the events causing major power outages</td><td></td></tr>
     <tr><td>cause.category.detail</td><td>Detailed description of event categories causing major power outages</td><td></td></tr>
     <tr><td>hurricane.names</td><td>Name of the hurricane if the outage was due to a hurricane</td><td></td></tr>
   </tbody>
 </table></center>
-
-<br>
 
 <center><strong>Table 1</strong> Variable descriptions.</center>
 
@@ -57,17 +55,11 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
 <small>2. The table is adapted from this [article](https://www.sciencedirect.com/science/article/pii/S2352340918307182).
 </small>
 
-## Step 2-1: Data Cleaning
-### (1) Download dataset
-### (2) Remove description
+## Data Cleaning
 
-As shown in Figure 1-2, the original excel file contains some description, which are not need for the program. So we remove them here.
-### (3) Keep relevant variables & Handle data type
-
-Also, since there're some missing values in the excel file, the default `pd.read_excel()` function can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.
-
-For the datetime columns `OUTAGE."{START|RESTORATION}.{DATE|TIME}`, we will handle them later.
-
+1. **Download dataset**
+2. **Remove description**: As shown in Figure 1-2, the original excel file contains some description, which are not needed for the program, so we remove them here.
+3. **Keep relevant variables & Handle data type**: Since there're some missing values in the original excel file, the default `pd.read_excel()` can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.For the datetime columns `outage."{start|restoration}.{date|time}`, we will handle them later.
 
 
 <iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
