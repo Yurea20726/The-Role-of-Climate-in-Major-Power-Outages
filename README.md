@@ -35,17 +35,19 @@ The dataset was provided by Laboratory for Advancing Sustainable Critical Infras
     <tr><td rowspan="3">Regional Climate Information</td><td>climate.region</td><td>U.S. Climate regions as specified by the National Centers for Environmental Information</td><td></td></tr>
     <tr><td>anomaly.level</td><td>Represents the oceanic El Niño/La Niña (ONI) index referring to cold and warm episodes</td><td></td></tr>
     <tr><td>climate.category</td><td>Climate episodes classified as “Warm”, “Cold”, or “Normal” based on ONI thresholds</td><td></td></tr>
-    <tr><td rowspan="6">Outage Events Information</td><td>Outage.Start.Date</td><td>Day of the year when the outage event started</td><td>Removed</td></tr>
-    <tr><td>outage.start.time</td><td>Time of the day when the outage event started</td><td>Removed</td></tr>
-    <tr><td>outage.restoration.date</td><td>Day of the year when power was restored</td><td>Removed</td></tr>
-    <tr><td>outage.restoration.time</td><td>Time of the day when power was restored</td><td>Removed</td></tr>
-    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Added. Combined from <code>outage.restoration.date</code> and <code>outage.start.time</code></td></tr>
-    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Added. Combined from <code>outage.restoration.date</code> and <code>outage.restoration.time</code></td></tr>
+    <tr><td rowspan="6">Outage Events Information</td><td>Outage.Start.Date</td><td>Day of the year when the outage event started</td><td>Removed.</td></tr>
+    <tr><td>outage.start.time</td><td>Time of the day when the outage event started</td><td>Removed.</td></tr>
+    <tr><td>outage.restoration.date</td><td>Day of the year when power was restored</td><td>Removed.</td></tr>
+    <tr><td>outage.restoration.time</td><td>Time of the day when power was restored</td><td>Removed.</td></tr>
+    <tr><td>outage.start</td><td>Time when the outage event started</td><td>Combined.</code></td></tr>
+    <tr><td>outage.restoration</td><td>Time when power was restored</td><td>Combined.</code></td></tr>
     <tr><td rowspan="3">Cause of the Event</td><td>cause.category</td><td>Categories of all the events causing major power outages</td><td></td></tr>
     <tr><td>cause.category.detail</td><td>Detailed description of event categories causing major power outages</td><td></td></tr>
     <tr><td>hurricane.names</td><td>Name of the hurricane if the outage was due to a hurricane</td><td></td></tr>
   </tbody>
 </table></center>
+
+<br>
 
 <center><strong>Table 1</strong> Variable descriptions.</center>
 
