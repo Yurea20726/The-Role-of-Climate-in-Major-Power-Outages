@@ -75,6 +75,7 @@ Since "Alaska" and "Hawaii" are not in the scope of U.S. climate regions (check 
 Calculate the proportion of severe weather as the cause of major power outages. Figure 2-1 shows that nearly 50% of them were due to severe weather. Therefore, it's definitely worth a in-depth study.
 
 <iframe src="pictures/fig_2_1.html" width="850" height="450" frameborder="0"></iframe>
+<center><strong>Figure 2-1.</strong> Cause of massive power outage.</center>
 
 Then, remove the record caused by other reasons for the rest of the project. Here's our cleaned data, contained 750 records left in total.
 
