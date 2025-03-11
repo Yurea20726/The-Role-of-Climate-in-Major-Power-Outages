@@ -66,9 +66,17 @@ As shown in Figure 1-2, the original excel file contains some description, which
 
 Since there're some missing values in the original excel file, the default `pd.read_excel()` can't detect the data type correctly. We explicitly specify the data type of each column. Note that data type `Int64`, `Float64` can hold `NaN` value.
 
-For the datetime columns `outage."{start|restoration}.{date|time}`, we will handle them later.
+Combine `outage.{start|restoration}.data` and `outage.{start|restoration}.time` into a new Datetime column `outage.{start|restoration}`, then drop the old those.
 
+Since "Alaska" and "Hawaii" are not in the scope of U.S. climate regions (check appendix A). Plus, we don't have the geometry data for "District of Columbia". We exclude all of them from the dataset.
+
+### (4) At a glimpse: Importance of severe weather
+
+Calculate the proportion of severe weather as the cause of major power outages. Figure 2-1 shows that nearly 50% of them were due to severe weather. Therefore, it's definitely worth a in-depth study.
 
 <iframe src="pictures/fig_2_1.html" width="800" height="600" frameborder="0"></iframe>
-<iframe src="dataframe/df_2_4.html" width="800" height="600" frameborder="0"></iframe>
+
+Then, remove the record caused by other reasons for the rest of the project. There're 750 records left in total.
+
+
 
