@@ -107,29 +107,31 @@ Before we dig further for the exploration, we need to be careful of where're mis
 
 ### (1) Univariate Analysis
 
-1. `year`: Showing long-term variations. A trend of increase followed by a decrease.
+1.`year`: Showing long-term variations. A trend of increase followed by a decrease.
+
 <iframe src="pictures/fig_2_2.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-2.</strong> Major power outages caused by severe weather. Grouped by year.</center>
-2. `month`: Showing seasonal patterns. A peak in summer (6～8) and a secondary peak in winter (12～2).
+
+2.`month`: Showing seasonal patterns. A peak in summer (6～8) and a secondary peak in winter (12～2).
 <iframe src="pictures/fig_2_3.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-3.</strong> Major power outages caused by severe weather. Grouped by month</center>
 
-3. `anomaly.level`: Seem can't get the tread easily. Since anomaly.level itself doesn't have a regular pattern, the frequency of "cold", "normal", "warm" category<sup><small>1</small></sup> is not equal too. Check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for ONI from previous year.
+3.`anomaly.level`: Seem can't get the tread easily. Since anomaly.level itself doesn't have a regular pattern, the frequency of "cold", "normal", "warm" category<sup><small>1</small></sup> is not equal too. Check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for ONI from previous year.
 
 <iframe src="pictures/fig_2_4.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-4.</strong> Major power outages caused by severe weather. Grouped by anomaly.level</center>
 
-4. `cause.category.detail`: There're many similar causes. Like "winter storm", "winter", "ice/snow", "ice/snow storm". Maybe they should be viewed as a single category to better differntiate different weather phenomena.
+4.`cause.category.detail`: There're many similar causes. Like "winter storm", "winter", "ice/snow", "ice/snow storm". Maybe they should be viewed as a single category to better differntiate different weather phenomena.
 
 <iframe src="pictures/fig_2_5.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-5.</strong> Major power outages caused by severe weather. Grouped by cause.category.detail</center>
 
-5. `u.s._state`: The most severely affected states are "Michigan", "California", and "Texas". Overall, the affected areas are in the west, south through northeast, but barely no in the central part.
+5.`u.s._state`: The most severely affected states are "Michigan", "California", and "Texas". Overall, the affected areas are in the west, south through northeast, but barely no in the central part.
 
 <iframe src="pictures/fig_2_6.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-6.</strong> Major power outages caused by severe weather. Grouped by state.</center>
 
-6. `climate.region`: Almost the same trend as (5).
+6.`climate.region`: Almost the same trend as (5).
 
 <iframe src="pictures/fig_2_7.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-7.</strong> Major power outages caused by severe weather. Grouped by climate.region.</center>
