@@ -101,5 +101,17 @@ Before we dig further for the exploration, we need to be careful of where're mis
 | cause.category.detail      | 0.245333 |
 | hurricane.names            | 0.905333 |
 
+## Exploratory Data Analysis
 
+## Step 2-2: Exploratory Data Analysis
 
+### (1) Univariate Analysis
+
+1. `year`: Showing long-term variations. A trend of increase followed by a decrease.
+2. `month`: Showing seasonal patterns. A peak in summer (6～8) and a secondary peak in winter (12～2).
+3. `anomaly.level`: Seem can't get the tread easily. Since anomaly.level itself doesn't have a regular pattern, the frequency of "cold", "normal", "warm" category<sup><small>1</small></sup> is not equal too. Check [here](https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php) or [here](https://www.macromicro.me/series/4848/oni-index-ocean-temperture) for ONI from previous year. 
+4. `cause.category.detail`: There're many similar causes. Like "winter storm", "winter", "ice/snow", "ice/snow storm". Maybe they should be viewed as a single category to better differntiate different weather phenomena.
+
+<iframe src="pictures/fig_2_2.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 2-2.</strong> Major power outages caused by severe weather. \
+<br>(Top-Left) Grouped by year. (Top-Right) Grouped by month. <br>(Bottom-Left) Gouped by anomaly.level. (Bottom-Right) Grouped by cause.Category.Detail.</center>
