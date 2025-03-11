@@ -8,12 +8,12 @@ In this project, we want to examine the relationship between climate and massive
 
 As shown in Figure 1-1, from January 2001 to July 2016, among the recorded 1,534 major power outages, "severe weather" accounted for nearly 50% of the causes compared to other factors. Therefore, if we can successfully predict the occurrence of severe weather events, both in time and space, that lead to major power outages, and take preventive measures in advance, the frequency of such outages can be significantly reduced.
 
-<center><img src="https://i.imgur.com/51u8Cyo.png" height="400px"></center>
+<center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_1.png" height="400px"></center>
 <center><strong>Figure 1-1.</strong> Cause of massive power outage. Copied from Figure 2-1.</center>
 
 The dataset was provided by Laboratory for Advancing Sustainable Critical Infrastructure in Purdue University. You can access the original excel file from [here](https://engineering.purdue.edu/LASCI/research-data/outages). Table 1<sup><small>2</small></sup> shows the description of each variable used in this project.
 
-<center><img src="https://i.imgur.com/2ZRNYV5.png" height="400px"></center>
+<center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_1_2.png" height="400px"></center>
 <center><strong>Figure 1-2.</strong> Part of the original excel file.</center>
 
 <center><table>
