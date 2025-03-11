@@ -144,3 +144,16 @@ Before we dig further for the exploration, we need to be careful of where're mis
 <center><strong>Figure 2-8.</strong> ONI over time.</center>
 
 2. `u.s._state` and `cause.category`: We can capture the pattern of each weather phenomena. This presentation better represents the numerical magnitude and integrates multiple reasons. Can be compared with Figure 2-6. We leave the same observation in (3).1 to avoid duplication.
+
+### (3) Interesting Aggregates
+
+1.`cause.category.detail` and `u.s._state`: We can capture the pattern of each weather phenomena. Can be compared with Figure 2-5. This presentation better represents the distribution characteristics of geographic regions.
+
+To better figure out the pattern in a single one, and between each other, we plot 4 maps of 4 differnt weather phenomena simultaneously. Here're some observations.
+ - Thunderstorm: Basically whole USA, except central part.
+ - Hurricanes: South through northeast.
+ - Wildfire: California is the most serious.
+ - Winter Storm: This surprised us the most. In our impression, California does not fit the image of a blizzard-prone place, but it is the most serious. Probably, there's other factors, such as topography, even the structural integrity of the facilit, need to be concerned.
+
+<iframe src="pictures/fig_2_10.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 2-10.</strong> Major power outages caused by severe weather. Grouped by state and cause. <br>(Top-Left) Thunderstorm (Top-Right) Hurricanes <br>(Bottom-Left) Wildfire (Bottom-Right) Winter Storm</center>
