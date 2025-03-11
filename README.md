@@ -108,12 +108,9 @@ Before we dig further for the exploration, we need to be careful of where're mis
 ### (1) Univariate Analysis
 
 1. `year`: Showing long-term variations. A trend of increase followed by a decrease.
-
 <iframe src="pictures/fig_2_2.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-2.</strong> Major power outages caused by severe weather. Grouped by year.</center>
-
 2. `month`: Showing seasonal patterns. A peak in summer (6～8) and a secondary peak in winter (12～2).
-
 <iframe src="pictures/fig_2_3.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 2-3.</strong> Major power outages caused by severe weather. Grouped by month</center>
 
