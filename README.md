@@ -87,6 +87,19 @@ Then, remove the record caused by other reasons for the rest of the project. Her
 | 5   | 2015 | 7     | Minnesota  | MN          | East North Central | 1.2           | warm             | 2015-07-18 02:00:00   | 2015-07-19 07:00:00  | severe weather | NaN                  | NaN            |
 | 6   | 2010 | 11    | Minnesota  | MN          | East North Central | -1.4          | cold             | 2010-11-13 15:00:00   | 2010-11-14 22:00:00  | severe weather | winter storm         | NaN            |
 
+### (5) At a glimpse: Missing values
+
+Before we dig further for the exploration, we need to be careful of where're missing values.
+
+| column                     | proportaion |
+|----------------------------|---------|
+| month                      | 0.005333 |
+| anomaly.level              | 0.005333 |
+| climate.category           | 0.005333 |
+| outage.start               | 0.005333 |
+| outage.restoration         | 0.025333 |
+| cause.category.detail      | 0.245333 |
+| hurricane.names            | 0.905333 |
 
 
 
