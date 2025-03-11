@@ -157,3 +157,22 @@ To better figure out the pattern in a single one, and between each other, we plo
 
 <iframe src="pictures/fig_2_10.html" width="850" height="850" frameborder="0"></iframe>
 <center><strong>Figure 2-10.</strong> Major power outages caused by severe weather. Grouped by state and cause. <br>(Top-Left) Thunderstorm (Top-Right) Hurricanes <br>(Bottom-Left) Wildfire (Bottom-Right) Winter Storm</center>
+
+2.`year` and `month`: We try to find pattern in season overall, and in each region.
+  - Overall: Seem no signigicant pattern.
+  - Northwest: Concentrated in the winter.
+  - West: Pretty averagely spread?
+  - South: Concentrated in the summer.
+
+<iframe src="pictures/fig_2_11.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 2-11.</strong> Major power outages caused by severe weather. Grouped by month and year in different region.</center>
+
+---
+
+<small>1. The categories—“Warm”, “Cold” or “Normal” episodes of the climate are based on a threshold of ± 0.5 °C for the Oceanic Niño Index (ONI).</small>
+
+## Assessment of Missingness
+
+### (1) NMAR Analysis
+
+To better understand the reason of missingness. We use data before filtering out those state in Alaska, Hawaii, District of Columbia, and cause is not severe weather.
