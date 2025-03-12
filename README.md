@@ -174,3 +174,15 @@ To better figure out the pattern in a single one, and between each other, we plo
 ### (1) NMAR Analysis
 
 To better understand the reason of missingness. We use data before filtering out those state in Alaska, Hawaii, District of Columbia, and cause is not severe weather.
+
+|       | column                  | count | propotyion | obs                                      |
+|-------|-------------------------|-------|---------|------------------------------------------|
+| 0     | month                   | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 1     | climate.region          | 6     | 0.003911 | [1516, 1517, 1518, 1519, 1520, 1534] |
+| 2     | anomaly.level           | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 3     | climate.category        | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 4     | outage.start            | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 5     | outage.restoration      | 58    | 0.037810 | [23, 37, 48, 50, 183, 193, 233, 240, 283, 302, ...] |
+| 6     | cause.category.detail   | 471   | 0.307040 | [1, 5, 19, 20, 24, 27, 28, 30, 32, 36, 41, 45, ...] |
+| 7     | hurricane.names         | 1462  | 0.953064 | [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, ...] |
+
