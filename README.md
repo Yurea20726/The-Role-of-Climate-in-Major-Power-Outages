@@ -173,4 +173,64 @@ To better figure out the pattern in a single one, and between each other, we plo
 
 ### (1) NMAR Analysis
 
-To better understand the reason of missingness. We use data before filtering out those state in Alaska, Hawaii, District of Columbia, and cause is not severe weather.
+To better understand the reason of missingness. We use data before filtering out those state in Alaska, Hawaii, District of Columbia, and cause is not severe weather. How are missing values distributed in the dataset?
+
+|       | column                  | count | propotyion | obs                                      |
+|-------|-------------------------|-------|---------|------------------------------------------|
+| 0     | month                   | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 1     | climate.region          | 6     | 0.003911 | [1516, 1517, 1518, 1519, 1520, 1534] |
+| 2     | anomaly.level           | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 3     | climate.category        | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 4     | outage.start            | 9     | 0.005867 | [240, 340, 366, 767, 888, 1319, 1507, 1531, 1534] |
+| 5     | outage.restoration      | 58    | 0.037810 | [23, 37, 48, 50, 183, 193, 233, 240, 283, 302, ...] |
+| 6     | cause.category.detail   | 471   | 0.307040 | [1, 5, 19, 20, 24, 27, 28, 30, 32, 36, 41, 45, ...] |
+| 7     | hurricane.names         | 1462  | 0.953064 | [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, ...] |
+
+Some observations we get:
+1. `month`, `anomaly.level`, `climate.category` and `outage.start` are missing simultaneously.
+2. (1) is a subset of `outage.restoration`.
+3. state of record `obs` 1516～1520 are "Hawaii", 1534 is "Alaska".
+4. `hurricane.names` is not empty if and only if `cause.category.detail` is "hurricanes".
+
+Some trivial conclusion we can made directly:
+1. `month` is **MAR**: Depends on `outage.start`.
+2. `climate.region` is **MD**: Since "Hawaii" and "Alaska" are not included in the classification, it's of course `NA`. Check appendix A for climate region.
+3. `anomaly.level` is **MAR**: Depends on `year` and `month`.
+4. `climate.category` is **MAR**: Depends on `anomaly.level`. Note that the categories "Warm", "Cold" or "Normal" are based on a threshold ±0.5℃ for ONI value (=`anomaly.level`).
+5. `hurricane.names` is **MD**: Since if `cause.category.detail` is not "hurricanes", it's of course `NA`.
+
+Among others, we believe that `cause.category.detail` is the mostly likely NMAR. There're several possible reasons,
+- Sensitive Cause: The reason of outages caused by intentional attacks, internal failures, etc, might be hidden to protect company's reputation.
+- Unidentified Cause: The scenario is too complex to determine the cause or that the cause cannot be determined after investigation.
+
+If we can accquire the additional data about the precise location of outages. We might be able to conclude that
+- Some region, utility provider are more likely to have missing values.
+- Maybe rural area has higher probability to have missing values than urban area.
+
+### (2) Missingness Dependency
+
+We test `outage.restoration` against `year` and `month`.
+
+1.`outage.restoration` versus `year`
+  - **Null Hypothesis**: The distribution of `year` is the same when `outage.restoration` is missing or not.
+  - **Alternate Hypothesis**: The distribution of `year` are different when `outage.restoration` is missing or not.
+
+<iframe src="pictures/fig_3_1.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 3-1.</strong> Year of missingness of outage.restoration.</center>
+
+The observed TVD value is 0.6602. We run 10000 iterations of permutation test, result in the distribution as Figure 3.2 shown, with a p-value of 0.0. Therefore, we reject the null hypothesis in favor of the alternate hypothesis. Indicating that the missingness of `outage.restoration` is dependent on `year`.
+
+<iframe src="pictures/fig_3_2.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 3-2.</strong> Distribution of simulated TVD value.</center>
+
+2.`outage.restoration` versus `month`
+  - **Null Hypothesis**: The distribution of `month` is the same when `outage.restoration` is missing or not.
+  - **Alternate Hypothesis**: The distribution of `month` are different when `outage.restoration` is missing or not.
+
+<iframe src="pictures/fig_3_3.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 3-3.</strong> Year of missingness of outage.restoration.</center>
+
+The observed TVD value is 0.2227. We run 10000 iterations of permutation test, result in the distribution as Figure 3.4 shown, with a p-value of 0.0. Therefore, we reject the null hypothesis in favor of the alternate hypothesis. Indicating that the missingness of `outage.restoration` is dependent on `year`.
+
+<iframe src="pictures/fig_3_4.html" width="850" height="850" frameborder="0"></iframe>
+<center><strong>Figure 3-4.</strong> Distribution of simulated TVD value.</center>
