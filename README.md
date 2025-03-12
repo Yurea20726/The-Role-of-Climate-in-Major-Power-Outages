@@ -215,22 +215,22 @@ We test `outage.restoration` against `year` and `month`.
   - **Null Hypothesis**: The distribution of `year` is the same when `outage.restoration` is missing or not.
   - **Alternate Hypothesis**: The distribution of `year` are different when `outage.restoration` is missing or not.
 
-<iframe src="pictures/fig_3_1.html" width="850" height="850" frameborder="0"></iframe>
+<iframe src="pictures/fig_3_1.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 3-1.</strong> Year of missingness of outage.restoration.</center>
 
 The observed TVD value is 0.6602. We run 10000 iterations of permutation test, result in the distribution as Figure 3.2 shown, with a p-value of 0.0. Therefore, we reject the null hypothesis in favor of the alternate hypothesis. Indicating that the missingness of `outage.restoration` is dependent on `year`.
 
-<iframe src="pictures/fig_3_2.html" width="850" height="850" frameborder="0"></iframe>
+<iframe src="pictures/fig_3_2.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 3-2.</strong> Distribution of simulated TVD value.</center>
 
 2.`outage.restoration` versus `month`
   - **Null Hypothesis**: The distribution of `month` is the same when `outage.restoration` is missing or not.
   - **Alternate Hypothesis**: The distribution of `month` are different when `outage.restoration` is missing or not.
 
-<iframe src="pictures/fig_3_3.html" width="850" height="850" frameborder="0"></iframe>
+<iframe src="pictures/fig_3_3.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 3-3.</strong> Year of missingness of outage.restoration.</center>
 
-The observed TVD value is 0.2227. We run 10000 iterations of permutation test, result in the distribution as Figure 3.4 shown, with a p-value of 0.0. Therefore, we reject the null hypothesis in favor of the alternate hypothesis. Indicating that the missingness of `outage.restoration` is dependent on `year`.
+The observed TVD value is 0.2227. We run 10000 iterations of permutation test, result in the distribution as Figure 3.4 shown, with a p-value of 0.1216. Therefore, we fail to reject the null hypothesis. Indicating that the missingness of `outage.restoration` is not dependent on `year`.
 
-<iframe src="pictures/fig_3_4.html" width="850" height="850" frameborder="0"></iframe>
+<iframe src="pictures/fig_3_4.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 3-4.</strong> Distribution of simulated TVD value.</center>
