@@ -259,3 +259,14 @@ Here's the result of some combinations.
 
 <iframe src="pictures/fig_4_2.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 4-2.</strong> Distribution of simulated TVD value.</center>
+
+## Apendix
+
+### A. Map of U.S Climate Regions
+
+Through climate analysis, National Centers for Environmental Information scientists have identified nine climatically consistent regions within the contiguous United States which are useful for putting current climate anomalies into a historical perspective (Karl and Koss, 1984).
+
+Adapted from [NCEI](https://www.ncei.noaa.gov/access/monitoring/reference-maps/us-climate-regions).
+
+<center><img src="https://raw.githubusercontent.com/Yurea20726/The-Role-of-Climate-in-Major-Power-Outages/main/pictures/fig_a.png" height="400px"></center>
+<center><strong>Figure A.</strong> Map of U.S climate regions.</center>
