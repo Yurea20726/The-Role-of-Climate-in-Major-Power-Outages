@@ -234,3 +234,28 @@ The observed TVD value is 0.2227. We run 10000 iterations of permutation test, r
 
 <iframe src="pictures/fig_3_4.html" width="850" height="420" frameborder="0"></iframe>
 <center><strong>Figure 3-4.</strong> Distribution of simulated TVD value.</center>
+
+## Hypothesis Testing
+
+We test whether the distribution of outages over month within the time range of the dataset is the same between different climate regions with the following framework.
+
+Given 2 climate regions $A$ and $B$
+- **Null Hypothesis**: Under the above assumption, the distribution of $A$ and $B$ are **the same**.
+- **Alternate Hypothesis**: Under the above assumption, the distribution of $A$ and $B$ are **different**.
+- **Test Statistic**: TVD of each month between $A$ and $B$
+- **Significance Level**: 0.001
+- **Iterations of Simulation**: 10000
+
+Here's the result of some combinations.
+
+| Pair | p-value |
+| :--: | :--: |
+| (West, Southeast) | 0.0002 |
+| (West, Northeast) | 0.0467 |
+| (South, Northeast) | 0.0002 |
+
+<iframe src="pictures/fig_4_1.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 4-1.</strong> Major power outages caused by severe weather. Distribution of different regions over month.</center>
+
+<iframe src="pictures/fig_4_2.html" width="850" height="420" frameborder="0"></iframe>
+<center><strong>Figure 4-2.</strong> Distribution of simulated TVD value.</center>
