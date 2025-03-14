@@ -264,233 +264,200 @@ Below is the report with **all first-person singular references changed to first
 
 ---
 
-## Framing a Prediction Problem
+##  Framing a Prediction Problem
 
-### (1) Overview of the Prediction Task
+ ### (1) Overview of the Task of Prediction
 
-Earlier analyses showed that severe weather causes roughly half of all major power outages in the U.S. Our question is:  
-**Once an outage starts, can we estimate how long it will take to restore power?**
+ Previous studies revealed that about half of all large U.S. power outages are caused by severe storms.  Our query is: **Once an outage begins, can we project the length of time needed to bring back power? ***
 
-- **Prediction Type**: Regression  
-- **Target Variable**: `outage_duration` (in hours, from `outage.start` to `outage.restoration`)
+ Regression is the type of prediction; the target variable is **outage_duration** (in hours, from `outage.start` to `outage.restoration`.)
 
-If we can guess the duration, it might help utility companies plan their responses and possibly reduce downtime.
+ If we can estimate the length, it would enable power providers to arrange their reactions and maybe lower downtime.
 
-### (2) Features Used
+ ### (2) Used Features
 
-We picked these features from the cleaned dataset, focusing on data we would likely know at the start of an outage:
+ We selected these characteristics from the cleaned data, emphasizing on information we would probably know at the beginning of an outage:
 
-1. **year**  
-2. **month**  
-3. **climate.region** (regional categories from the National Centers for Environmental Information)  
-4. **anomaly.level** (numeric indicator for El Niño/La Niña episodes)  
-5. **cause.category.detail** (specific weather event, e.g., thunderstorm, winter storm)
+ One **year** here.  
+ 2: **month**  
+ 3. **environment** based on climate region  (geographic groups derived from National Centers for Environmental Information)  
+ 4. **anomaly.level** (numeric El Niño/La Niña episode indication)  
+ 5. **cause.category. Detail**  (particular meteorological occurrence, as a thunderstorm or winter storm)
 
-We thought these features would capture both temporal and weather aspects, which we assumed matter a lot for outage durations.
+ We expected these characteristics would be rather important for outage lengths since they would reflect both temporal and meteorological elements.
 
-### (3) Modeling Workflow
+ ### (3) Workflow of Modeling
 
-We created a **Random Forest Regressor** pipeline in scikit‐learn. Here’s a quick summary:
+ In scikit-learn we built a **Random Forest Regressor** pipeline.  This is a brief synopsis:
 
-1. **Data Split**  
-   - We used an 80–20 train–test split to separate training and testing data.
+ Training and testing data were split 80–20 using an 80–20 train–test split.
 
-2. **Preprocessing**  
-   - **Categorical Features** (`climate.region`, `cause.category.detail`): Encoded with `OneHotEncoder()` so the model can handle them.  
-   - **Numeric Features** (`year`, `month`, `anomaly.level`): Scaled by `StandardScaler()` to normalize ranges.
+ 2. Preprocessing; **Categorical Features**  Encoded with `OneHotEncoder()`, so the model may handle `climate.region`, `cause.category.detail`.  
+    ** numerical characteristics**  Scaled using ` StandardScaler()` to normalize ranges, (`year`, `month`, `anomaly.level`.
 
-3. **Random Forest Model**  
-   - We used `RandomForestRegressor(n_estimators=100, random_state=42)` because we read that random forests can work well even without excessive tuning.
+ 3. **Random Forest Model** - We heard that random forests can function effectively even without great tuning, hence we used `RandomForestRegressor(n_estimators=100, random_state=42).
 
-### (4) Model Performance
+ ### (4) Model Accuracy
 
-After training and predicting on the test set, we looked at three main metrics:
+ Following training and test set predictions, we examined three primary metrics:
 
-- **MAE (Mean Absolute Error)** = 48.35 hours  
-- **RMSE (Root Mean Squared Error)** = 86.40 hours  
-- **\(R^2\) Score** = −1.043  
+ 48.35 hours for **MAE (Mean Absolute Error)**; 86.40 hours for **RMSE ( Root Mean Squared Error);** R^2\) Score** = −1.043.  
 
-We were quite surprised by the **negative \(R^2\)** value. It suggests our model does worse than if we just guessed the average outage duration each time. This is disappointing, but it clearly shows we need more (or better) features, or maybe a different approach to tuning.
+ The **negative \(R^2\)** value startled us really a bit.  It implies our model performs worse than if we only estimated the average length of outage every time.  Although this is unsatisfactory, it amply illustrates our need for more—or better—features, or perhaps an alternative tuning technique.
 
----
+ ___
 
-## 5. Observations and Possible Reasons
+ ## 5. Notes and Likely Motives
 
-1. **Limited Feature Information**  
-   - There could be many external factors (e.g., the state of the power grid, how quickly repair crews can be sent out, or local geography) that aren’t in our dataset. Missing such critical info can really hurt performance.
+ Our dataset might not contain many external elements (e.g., the condition of the electricity system, how fast repair staff could be dispatched, or local geography).  Such missing of such important data can seriously affect performance.
 
-2. **High Variability in Outages**  
-   - Some outages might be quick fixes (like minor thunderstorms), while others (like large hurricanes or multiple grid failures) take way longer. A small set of features might not capture these huge differences.
+ 2. **Great Variability in Outages** -  While some outages—like light thunderstorms—have speedy repairs, others—like major hurricanes or repeated grid failures—take far more time.  A limited collection of characteristics could not be able to adequately depict these significant variations.
 
-3. **Data Quality**  
-   - Handling missing values or grouping similar weather categories might need more careful strategies. Combining categories like “winter,” “ice/snow,” etc. might reduce noise and help the model learn.
+ 3. **Data Quality** - Managing missing numbers or grouping like-minded weather patterns could call for more deliberate approaches.  Combining terms like "winter," "ice/snow, etc. might assist the model learn and aid to lower noise.
 
-### (6) Future Directions
+ ### (6) Future orientations
 
-- **Feature Engineering**  
-  We might combine or refine `cause.category.detail` to reduce overlap, and maybe gather extra data like wind speeds, rainfall amounts, or more detailed event severity levels.
+ **Feature Engineering**  
+   To minimize overlap, we can mix or refine `cause.category.detail`. Alternatively, we might compile additional data including wind speeds, rainfall totals, or more exact levels of event intensity.
 
-- **Model Tuning**  
-  We are still learning about tuning random forests (e.g., adjusting `max_depth` or other hyperparameters). We also want to try methods like Gradient Boosting or Neural Networks, which might handle complex relationships better.
+ Models tuning:  
+   Tuning random forests—that is, changing `max_depth` or another hyperparameter—is still under study.  We also wish to test approaches like Gradient Boosting or Neural Networks, which might manage complicated interactions better.
 
-- **Expert Insights**  
-  Consulting utility company engineers or meteorologists might reveal key factors we’re missing—like how certain grid designs are more resilient to specific weather patterns.
+ - **Professional Advice**  
+   Speaking with utility company engineers or meteorologists could expose important information we are lacking—such as how particular grid designs are more resistant to particular weather patterns.
 
----
+ ——
 
-## Baseline Model
+ ## Baseline Model
 
-Here, we built a simpler **baseline regression model** to predict outage duration using just two features—enough to get a quick benchmark.
+ Here we developed a simpler **baseline regression model** employing just two features—enough to provide a quick benchmark—to forecast outage length.
 
-### (1) Features and Their Types
+ ### (1) Features and Their Forms
 
-1. **month (Numeric)**  
-   - Represents which month (1 = January, 2 = February, etc.).  
-   - We didn’t apply any scaling or transformations here to keep it simple.
+ One represents which month (1 = January, 2 = February, etc.). **Month (Numeric)**  
+    In particular,  Here to keep it straightforward, we applied no scaling or adjustments.
 
-2. **cause.category.detail (Categorical)**  
-   - Includes labels like “thunderstorm,” “winter storm,” “wildfire,” etc.  
-   - Treated as a nominal categorical variable via **One‐Hot Encoding**.
+ 2. **cause.category. Detail (Categorical)**  
+    Contains names like "thunderstorm, "winter storm," "wildfire, etc."  
+    treated using **One‐Hot Encoding** as a nominal categorical variable.
 
-### (2) Model Choice and Pipeline
+ #2: Model Selection and Pipeline
 
-- **Model**: A basic **Linear Regression** served as the baseline.  
-- **Preprocessing**:  
-  - `cause.category.detail` → OneHotEncoder  
-  - `month` → Passed through without changes
+ The baseline was a fundamental **Linear Regression**.  
+ Preprocessing: cause.category.detail → OneHotEncoder; month → passed through without modification
 
-So, the pipeline is basically:
-1. **OneHotEncode** the weather event category.  
-2. **LinearRegression** on the processed features.
+ The pipeline therefore is essentially: **OneHotEncode** the category of weather events.  
+ 2. **Linear Regression** on processed features.
 
-### (3) Training and Evaluation
+ ### (3) Examining and Training
 
-We used the same 80–20 split. After training, we got the following metrics on the test set:
+ We divided things 80–20 exactly.  On the test set following training, we obtained:
 
-- **MAE** = 44.71 hours  
-- **RMSE** = 59.77 hours  
-- **R^2** = 0.022
+ 44.71 hours is **MAE**; 59.77 hours is **RMSE**; 0.227 is **R^2**.
 
-**Interpretation**:
-- On average, we’re off by about 45 hours, which is nearly two days.  
-- An \(R^2\) of 0.022 means only ~2.2% of the variation in outage duration is explained by these two features.
+ **Interpretation**: We're off by almost 45 hours on average, over two days.  
+ Regarding:  These two factors explain just ~2.2% of the variance in outage length for a \(R^2\) = 0.222.
 
-### (4) Is This Model “Good”?
+ (4) ###  Is this model "good?"
 
-- **Pros**  
-  - Very quick to implement, so it’s a nice starting point.  
-  - Hardly any data manipulation is needed.
+ **Pros** -  Excellent beginning point since very quick implementation is involved.  Not too much data modification is required.
 
-- **Cons**  
-  - The R^2 is very low, suggesting `month` and `cause.category.detail` alone don’t explain much of what’s happening.  
-  - The large errors mean we’re not very accurate at predicting how long outages last.
+ The very low R^2 indicates that `month` and `cause.category.detail` by themselves cannot adequately describe much of what is happening.  
+   In particular,  The significant mistakes indicate that our estimate of the duration of interruptions is really poor.
 
-We wouldn’t use this model in a real setting, but it’s a **benchmark** that sets the stage for more complex models (like the Random Forest we tried next).
+ Although this is a **benchmark** that prepares the ground for more intricate models (such as the Random Forest we investigated next), we would not apply this model in a practical environment.
 
----
+ —–
 
-## Final Model
+ ## Final Model
 
-Next, we attempted a **final model** that goes beyond the baseline by:
-1. Adding at least **two new features**  
-2. **Tuning** certain hyperparameters  
-3. Using the same train–test split so comparisons are fair
+ Then we tried a **final model** above the baseline by:
+ 1. Including minimum **two new features**  
+ 2. **Tuning** several hyperparameters  
+ 3. The same train-test split guarantees fair comparisons.
 
-### (1) Feature Engineering
+ ### (1) Engineer features
 
-Originally, we had `month` (numeric) and `cause.category.detail` (categorical) in the baseline. Now we kept those, but we replaced the integer `month` with cyclical transformations and also added:
+ The baseline consisted originally in `month` (numeric) and `cause.category.detail`. (categorical).  We now maintained those, but we also implemented cyclical transformations to replace the integer `month`.
 
-1. **year** (numeric)  
-   - Might capture trends over time (e.g., infrastructure improvements or climate shifts).
+ 1. **year** (numeric) - Might show changes over time (such as changes in infrastructure or climate).
 
-2. **Cyclical Encoding of `month`**  
-   - `month_sin = sin(2π × month / 12)`  
-   - `month_cos = cos(2π × month / 12)`  
-   - Because month data is cyclical (after December comes January), a sine/cosine approach can represent seasonal patterns more smoothly than just 1–12.
+ 2. **Circular Encoding of `month`**  
+    Month sin = sin(2π × month / 12).  
+    {month_cos = cos(2π × month / 12}  
+    In -  A sine/cosine technique can more gently depict seasonal trends than a simple 1–12 as month data is cyclical (after December comes January).
 
-We also included:
-- **anomaly.level** (numeric, standardized)  
-- **cause.category.detail** (categorical, one‐hot)
+ We also included: - **anomaly.level** (numeric, standardized)  
+ **cause. category. detail** (categorical, one-hot)
 
-So in total, the **final feature set** has:
-- `year`, `month_sin`, `month_cos`, `anomaly.level`, and `cause.category.detail`.
+ Thus, the **final feature set** has, overall: - {year}, {month_sin}, {month_cos}, {anomaly.level}, and {cause.category.detail}.
 
-### (2) Model Selection and Hyperparameter Tuning
+ ### 2) Hyperparameter Tuning and Model Selection
 
-We chose a **Random Forest Regressor** again to see if it captures more complex relations. We did a **GridSearchCV** over:
+ Once more, we selected a **Random Forest Regressor** to test if it picks more intricate relationships.  Over: **GridSearchCV** we did.
 
-- `n_estimators`: [50, 100]  
-- `max_depth`: [None, 5, 10]
+ n_estimators=[50, 100]  
+ The maximum depth is [None, 5, 10].
 
-with 3‐fold cross‐validation, optimizing **neg_mean_squared_error**.  
-> **Best Parameters**:  
-> - `max_depth = 5`  
-> - `n_estimators = 100`
+ improving **neg_mean_squared_error** with 3‐fold cross‐valuation: **Best Parameters**  
+ More  Max depth = 5; n_estimators = 100
 
-### (3) Final Model Performance
+ #(3) Final Model Performance
 
-With those parameters, we retrained and tested:
+ Under those guidelines, we retrained and tested:
 
-- **MAE** = 46.56 hours  
-- **RMSE** = 68.60 hours  
-- **R^2** = −0.288
+ **MAE** = 46.56' hours; **RMSE** = 68.60' hours; **R^2** = −0.288.
 
-Surprisingly, the result is worse than the baseline (which had MAE ~45, RMSE ~60, \( R^2 \approx 0.022\)). So the final model’s:
+ Oddly, the outcome is worse than the baseline (which had MAE ~45, RMSE ~60, \( R^2 \approx 0.222%).  hence the final model's:
 
-- **MAE** got higher,  
-- **RMSE** also went up,  
-- **R^2** became negative again, meaning performance is even lower than a naive guess.
+ **MAE** rose; **RMSE** also rose; **R^2** turned negative once more, indicating performance even less than a naive estimate.
 
-### (4) Discussion and Possible Reasons
+ ### (4) Talk about and likely causes
 
-1. **Complex but Missing Factors**  
-   Possibly, the cyclical month encoding and the `year` feature don’t address main drivers of outage duration, like local repair crew sizes or the exact path of a storm.
+ One has **complex but missing factors**.  
+    Maybe the cyclical month encoding and the `year` feature ignore primary factors influencing the length of an outage, such as local repair crew sizes or storm exact course.
 
-2. **Data Limitations**  
-   Even with cross‐validation, the final model might be overfitting in some folds, or we may simply lack enough relevant data to see real improvements.
+ 2. **Database Restraints**  
+    Cross-valuation notwithstanding, the final model might be overfitting in some folds or we might simply lack sufficient relevant data to show actual changes.
 
-3. **Mismatch Between Seasonal Features and Real Restoration Times**  
-   The time of year (month) might not strongly affect how quickly power lines get fixed, compared to on‐the‐ground conditions like flooding, ice accumulation, or local grid structure.
+ 3. **Match Between Real Restitution Times and Seasonal Features**  
+    Comparatively to on-the- ground factors like flooding, ice accumulation, or local grid structure, the time of year (month) may not significantly influence how soon electricity lines get fixed.
 
----
+ ---
 
-## Fairness Analysis
+ ## Fairness Analysis
 
-Finally, we investigated if our **final model** treats different groups of outages “fairly.” Specifically, we wondered if it makes larger errors for hurricanes than for other types of severe weather. To test this, we performed a **permutation test** comparing the **Mean Absolute Errors (MAE)** for two groups in the test set.
+ At last, we looked at whether our **final model** handles various sets of outages "fairly".  We specifically asked whether hurricanes cause more mistakes than other kinds of severe storms.  We tested this by **permutation** comparing the **Mean Absolute Errors (MAE)** for two groups in the test set.
 
-### (1) Defining Two Groups
+ ### (1) Clarifying Two Groups
 
-- **Group A**: Outages labeled as “hurricanes.”  
-- **Group B**: Outages from all other severe‐weather categories.
+ Group A: Outages tagged as "hurricanes."  
+ **Group B** : Outages spanning all other severe-weather classification.
 
-### (2) Evaluation Metric
+ ### (2) Standard of Measurement
 
-This is still a **regression** problem, so we looked at each test example’s absolute error:
+ We considered the absolute inaccuracy of every test sample since this is still a **regression** issue:
 
-$$
-AE_i = |\hat{y}_i - y_i|
-$$
+ $$ AE_i = |\hat{y}_i - y_i| $$
 
-Then we computed the average AE for Group A and Group B and took their difference.
+ We then calculated the average AE for Groups A and B and derived their difference.
 
-### (3) Null & Alternative Hypotheses
+ ### (3)null and alternative hypotheses
 
-- **\(H_0\)**: The model is “fair” regarding hurricane vs. non‐hurricane outages—meaning there is no real difference in average AE between the two groups.  
-- **\(H_1\)**: The model is “unfair”—there is a **non‐zero** difference in AE for these groups.
+ Regarding hurricane vs. non-hurricane outages, the model is "fair," hence average AE between the two groups is not really different.  
+ The model is "unfair"—that is, AE for these groups differs **nonzero**.
 
-### (4) Observed Difference & Permutation Test
+ ### (4) observed permutation test and difference
 
-- **Group A (Hurricanes)**: 9 test points  
-  - Mean AE ≈ 83.06 hours  
-- **Group B (Non‐Hurricanes)**: 103 test points  
-  - Mean AE ≈ 43.37 hours  
-- **Observed Difference**: about 39.69 hours
+ **Group A ( hurricanes)** : 9 exam points  
+   Mean AE = 83.06 hours; **Group B**: 103 test points—Non- hurricanes  
+   Mean AE approximates 43.37 hours; observed difference is roughly 39.69 hours.
 
-We then shuffled the “hurricane vs. non‐hurricane” labels 10,000 times to see if the difference we observed could happen by random chance. The **p‐value** came out to **0.0342**.
+ We then randomly shuffled the "hurricane vs. non-hurricane" labels 10,000 times to find if the variation we noted could occur by coincidence.  The p-value arrived at **0.0342**.
 
-### (5) Conclusion
+ ### (5) End
 
-Since p = 0.0342 < 0.05, we reject the idea that the model’s errors are the same for hurricanes and non‐hurricanes. Essentially, **it’s making bigger mistakes** for hurricane outages than for other severe‐weather outages—an indication of a fairness or bias issue. We might need to add more detailed hurricane‐specific data or adjust the model to handle hurricanes differently so that it isn’t so inaccurate for those events.
+ We reject the notion that the model's mistakes are the same for hurricanes and non-hurricanes since p = 0.0342 < 0.05.  Basically, **it's making bigger mistakes** for storm disruptions than for other severe-weather outages—an indicator of a fairness or bias problem.  We might have to modify the model to handle storms differently or incorporate more thorough hurricane-specific data to make the model less so erroneous for those events.
 
 ---
 
